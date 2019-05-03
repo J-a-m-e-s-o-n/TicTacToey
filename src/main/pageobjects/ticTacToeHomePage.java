@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Random;
 
@@ -27,19 +26,9 @@ public class ticTacToeHomePage {
 
     public static void assertSpaceEmptyAndClick(WebDriver driver, String position) {
         String isOccupiedbyO = " .o";
-        String isOccupiedbyX = " .x";
-        int turn = 0;
         try {
-            if(turn == 0){
-                driver.findElement(By.cssSelector(position + isOccupiedbyX));
-                System.out.println("Position: " + position + isOccupiedbyX + " is taken by X. Turn: " + turn);
-                turn++;
-            }
-            else if(turn == 1){
-                driver.findElement(By.cssSelector(position + isOccupiedbyO));
-                System.out.println("Position: " + position + isOccupiedbyO + " is taken by O.");
-                //fail("The spot has been used");
-            }
+            driver.findElement(By.cssSelector(position + isOccupiedbyO));
+            System.out.println("Position: " + position + isOccupiedbyO + " is taken by O.");
         } catch (NoSuchElementException ex) {
             driver.findElement(By.cssSelector(position)).click();
         }
