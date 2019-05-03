@@ -17,16 +17,15 @@ public class playTicTacToe {
         driver.navigate().to(TARGET_URL);
 
         while(gameStillOn != false){
-            System.out.println("Testing - Random number selected: " + randomBoardPositions[movesTaken]
-                    + " Moves Taken: " + movesTaken);
             ticTacToeHomePage.assertSpaceEmptyAndClick(driver, board[randomBoardPositions[movesTaken]]);
             movesTaken++;
+            Thread.sleep(300);
             if(movesTaken >= 3){
                 Thread.sleep(700);
                 gameStillOn = ticTacToeHomePage.checkIfPlayerHasWon(driver);
             }
         }
-        driver.quit();
+        //driver.quit();
     }
 
 }

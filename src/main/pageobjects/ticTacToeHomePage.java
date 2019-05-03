@@ -28,7 +28,7 @@ public class ticTacToeHomePage {
         String isOccupiedbyO = " .o";
         try {
             driver.findElement(By.cssSelector(position + isOccupiedbyO));
-            System.out.println("Position: " + position + isOccupiedbyO + " is taken by O.");
+            System.out.println("Position - " + position + " is already occupied by O.");
         } catch (NoSuchElementException ex) {
             driver.findElement(By.cssSelector(position)).click();
         }
