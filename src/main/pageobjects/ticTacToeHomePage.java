@@ -6,19 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Random;
+
 public class ticTacToeHomePage {
-
-    private final WebDriver driver = new ChromeDriver();
-
-    WebElement topLeft = driver.findElement(By.cssSelector(".square.top.left"));
-    WebElement topCenter = driver.findElement(By.cssSelector(".square.top"));
-    WebElement topRight = driver.findElement(By.cssSelector(".square.top.right"));
-    WebElement middleLeft = driver.findElement(By.cssSelector(".square.left"));
-    WebElement middleCenter = driver.findElement(By.cssSelector(".square"));
-    WebElement middleRight = driver.findElement(By.cssSelector(".square.right"));
-    WebElement bottomLeft = driver.findElement(By.cssSelector(".square.bottom.left"));
-    WebElement bottomCenter = driver.findElement(By.cssSelector(".square.bottom"));
-    WebElement bottomRight = driver.findElement(By.cssSelector(".square.bottom.right"));
 
     public static String[] populateBoardPositions(){
         String topLeft = ".board >div:nth-child(1)";
@@ -72,6 +62,22 @@ public class ticTacToeHomePage {
             return false;
         }
         else return true;
+    }
+
+    public static int[] getArrayOfRandomIndexes(int length) {
+        Random random = new Random();
+        int rIndex;
+        int rValue;
+        int[] nums = new int[length-1];
+        for (int i = 0; i < nums.length; ++i) { nums[i] = i; }
+        for(int i = 0; i < nums.length; ++i)
+        {
+            rIndex = random.nextInt(nums.length);
+            rValue = nums[rIndex];
+            nums[rIndex] = nums[i];
+            nums[i] = rValue;
+        }
+        return nums;
     }
 
 }
